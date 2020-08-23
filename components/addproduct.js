@@ -5,9 +5,9 @@ import {useNavigation} from '@react-navigation/native'
 import Header from './header'
 
 export default function AddProductComponent() {
-    const navigtion=useNavigation();
+    const navigation=useNavigation();
     const [products, setProducts] = useState({
-        productName:'',
+        products:'',
         productImage:'',
         productPrice:'',
         productDescription:'',
@@ -20,6 +20,7 @@ export default function AddProductComponent() {
         setProducts({productName:value})
     }
     const getProductImage=(value)=>{
+        console.log(value)
         setProducts({productImage:value})
     }
     const getProductPrice=(value)=>{
@@ -36,13 +37,14 @@ export default function AddProductComponent() {
     }
     const addProduct=() => {
         const productRequestBody={
-            "productName":productName,
-            "productImage":productImage,
-            "productPrice":productPrice,
-            "productStock":productStock,
-            "productDescription":productDescription,
-            "productCategory":productCategory
+            "productName":products['productName'],
+            "productImage":products['productImage'],
+            "productPrice":products['productPrice'],
+            "productStock":products['productStock'],
+            "productDescription":products['productDescription'],
+            "productCategory":products['productCategory']
         }
+        console.log(productRequestBody)
         axios.post('http://localhost:3000/allProducts',productRequestBody)
             .then(res => {
                 console.log(res.data)
@@ -67,7 +69,7 @@ export default function AddProductComponent() {
             </Picker>
         </View>
         </ScrollView>
-        <Button style={mystyles.button} onPress ={()=>addProduct(products)} title="Add Product"></Button>
+        <Button style={mystyles.button} onPress ={()=>addProduct()} title="Add Product"></Button>
         </View>
     );
 

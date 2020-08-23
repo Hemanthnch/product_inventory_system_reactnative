@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native' 
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Button, TouchableOpacity,TextInput } from "react-native";
 
 export default function Header( ){
     const navigation=useNavigation();
@@ -8,9 +8,14 @@ export default function Header( ){
         <View style={mystyles.header}>
             <Text style={mystyles.heading}>Product Inventory System</Text>  
            
+            
         <View style={mystyles.buttons}>
             <Button onPress ={()=>navigation.navigate('AddProduct')} title="Add Product"></Button>
-        </View>  
+         
+   
+        
+            
+        </View>
         </View>   
     )
 }
@@ -27,8 +32,10 @@ const mystyles = StyleSheet.create({
         fontSize:30
     },
     buttons:{
-        padding:40,
-        marginBottom:20
-    }
+        padding:12,
+        marginTop:60
+        
+    },
+    
 })
 
