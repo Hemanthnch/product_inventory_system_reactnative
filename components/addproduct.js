@@ -6,8 +6,9 @@ import Header from './header'
 
 export default function AddProductComponent() {
     const navigation=useNavigation();
-    const [products, setProducts] = useState({
-        products:'',
+    let [products, setProducts] = useState({
+        id:'',
+        productName:'',
         productImage:'',
         productPrice:'',
         productDescription:'',
@@ -16,43 +17,52 @@ export default function AddProductComponent() {
 
     })
     
-    const getProductName=(value)=>{
-        setProducts({productName:value})
-    }
-    const getProductImage=(value)=>{
+    function getProductName(value){
         console.log(value)
-        setProducts({productImage:value})
+        products['productName']=value
+        setProducts(products)
     }
-    const getProductPrice=(value)=>{
-        setProducts({productPrice:value})
+    function getProductImage(value){
+        console.log(value)
+        products['productImage']=value
+        setProducts(products)
     }
-    const getProductStock=(value)=>{
-        setProducts({productStock:value})
+    function getProductPrice(value){
+        console.log(value)
+        products['productPrice']=value
+        setProducts(products)
     }
-    const getProductDescription=(value)=>{
-        setProducts({productDescription:value})
+    function getProductStock(value){
+        console.log(value)
+        products['productStock']=value
+        setProducts(products)
     }
-    const getProductCategory=(value)=>{
-        setProducts({productCategory:value})
+    function getProductDescription(value){
+        console.log(value)
+        products['productDescription']=value
+        setProducts(products)
     }
-    const addProduct=() => {
-        const productRequestBody={
-            "productName":products['productName'],
-            "productImage":products['productImage'],
-            "productPrice":products['productPrice'],
-            "productStock":products['productStock'],
-            "productDescription":products['productDescription'],
-            "productCategory":products['productCategory']
-        }
+    function getProductCategory(value){
+        console.log(value)
+        products['productCategory']=value
+        setProducts(products)
+    }
+    function addProduct() {
+        let productRequestBody=products
+            
+        
         console.log(productRequestBody)
-        axios.post('http://localhost:3000/allProducts',productRequestBody)
+        axios.post('http://localhost:3000/allProducts/',productRequestBody)
             .then(res => {
                 console.log(res.data)
                 navigation.navigate('Home')
+            },error=>{
+                console.error(error)
             })
     }
     return(
         <View style={mystyles.maincontainer}>
+            
         <ScrollView>
         <View >
             <TextInput style={mystyles.listitem} placeholder="Enter Product Name" onChangeText={getProductName}></TextInput>
@@ -60,7 +70,7 @@ export default function AddProductComponent() {
             <TextInput style={mystyles.listitem} placeholder="Enter Product Price"onChangeText={getProductPrice}></TextInput>
             <TextInput style={mystyles.listitem} placeholder="Enter Product Stock"onChangeText={getProductStock}></TextInput>
             <TextInput style={mystyles.listitem} placeholder="Enter Product Description"onChangeText={getProductDescription}></TextInput>
-            <Picker style={mystyles.listitem} placeholder="Enter Product Category"onChangeText={getProductCategory}>
+            <Picker style={mystyles.listitem} placeholder="Enter Product Category"onValueChange={getProductCategory}>
                 <Picker.Item label="Select Product Category"></Picker.Item>
                 <Picker.Item label="Electronics" value="electronics"></Picker.Item>
                 <Picker.Item label="Stationary" value="stationary"></Picker.Item>
@@ -85,9 +95,9 @@ const mystyles = StyleSheet.create({
        // width:200,
         marginTop: 20,
         fontSize: 30,
-        backgroundColor: 'cyan',
+        backgroundColor: 'cornflowerblue',
         padding: 2,
-        color: 'purple'
+        color: 'black'
     },
     button:{
         borderRadius:8,

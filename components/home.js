@@ -62,9 +62,9 @@ const mystyles = StyleSheet.create({
     listitem: {
         marginTop: 20,
         fontSize: 30,
-        backgroundColor: 'cyan',
+        backgroundColor: 'cornflowerblue',
         padding: 20,
-        color: 'purple'
+        color: 'black'
     },
     search:{
         backgroundColor:'gold',

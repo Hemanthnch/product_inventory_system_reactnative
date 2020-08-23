@@ -23,7 +23,7 @@ export default function Header( ){
 const mystyles = StyleSheet.create({
     header:{
         height:80,
-        backgroundColor:'lightblue'
+        backgroundColor:'orange'
     },
     heading:{
         fontWeight:'bold',
