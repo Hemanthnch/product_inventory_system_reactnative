@@ -62,7 +62,7 @@ export default function AddProductComponent() {
     }
     return(
         <View style={mystyles.maincontainer}>
-            
+            <Header></Header>
         <ScrollView>
         <View >
             <TextInput style={mystyles.listitem} placeholder="Enter Product Name" onChangeText={getProductName}></TextInput>

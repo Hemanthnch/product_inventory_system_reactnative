@@ -9,13 +9,7 @@ export default function Header( ){
             <Text style={mystyles.heading}>Product Inventory System</Text>  
            
             
-        <View style={mystyles.buttons}>
-            <Button onPress ={()=>navigation.navigate('AddProduct')} title="Add Product"></Button>
-         
-   
         
-            
-        </View>
         </View>   
     )
 }
@@ -31,11 +25,7 @@ const mystyles = StyleSheet.create({
         paddingTop:35,
         fontSize:30
     },
-    buttons:{
-        padding:12,
-        marginTop:60
-        
-    },
+   
     
 })
 

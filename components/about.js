@@ -5,12 +5,12 @@ import Header from './header'
 import { useNavigation } from '@react-navigation/native';
 
 export default function AboutComponent(props) {
-    // console.log(props)
+    console.log(props)
     // const detail=props.route.params.item
     const detail = props.route.params.item
     const navigation =useNavigation();
     function productDelete(){
-        axios.delete('http://localhost:3000/allProducts/'+detail.id)
+        axios.delete('http://localhost:3000/allProducts/'+detail)
         .then(response =>{
             console.log(response)
             navigation.navigate('Home')
@@ -25,7 +25,7 @@ export default function AboutComponent(props) {
                 console.log(res.data)
                 setProducts(res.data)
             })
-    })
+    },[])
     return (
         <View style={mystyles.maincontainer}>
             <Header></Header>
