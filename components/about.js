@@ -48,7 +48,7 @@ export default function AboutComponent(props) {
                                 <br></br>
                                 Product Category : {product.productCategory}
                                 <br></br>
-                                <Button style={mystyles.edit} title={"Edit"} color="green"></Button>
+                                <Button style={mystyles.edit} title={"Edit"} color="green" onPress={() => { navigation.navigate('EditProduct', { item: product.id }) }}></Button>
                                 &nbsp;
                                 <Button title={"Delete"} color="red" onPress={productDelete}></Button></Text>
                     </View>
